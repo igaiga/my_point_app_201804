@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_04_091358) do
+ActiveRecord::Schema.define(version: 2018_04_04_090631) do
+
   create_table "points", force: :cascade do |t|
     t.integer "amount"
     t.integer "user_id"
