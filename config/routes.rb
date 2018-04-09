@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [] do
-    resources :points, only: [:index]
+    resource :points, only: [:show] do
+      get :decrease #TODO: POSTへ変更
+    end
   end
 end
