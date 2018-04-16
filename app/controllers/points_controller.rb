@@ -1,4 +1,5 @@
 class PointsController < ApplicationController
+  # GET /users/1/points/points.json
   def show
     user_id = params.permit(:user_id, :format)[:user_id]
     user = User.find(user_id) # TODO: token
@@ -7,7 +8,7 @@ class PointsController < ApplicationController
     end
   end
 
-  # /users/1/points/decrease.json?point=10
+  # POST /users/1/points/decrease.json  {"point": 10}, 'Content-Type'=>'application/json'
   def decrease
     user_id = params.permit(:user_id, :format)[:user_id]
     point = params.permit(:point)[:point].to_i
