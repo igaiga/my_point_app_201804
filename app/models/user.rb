@@ -2,6 +2,10 @@ class User < ApplicationRecord
   has_many :points
   before_validation :set_token, on: :create
 
+  def self.generate!(name:)
+    create!(name: name)
+  end
+
   def increase_point(value)
     points.create!(amount: value)
   end
