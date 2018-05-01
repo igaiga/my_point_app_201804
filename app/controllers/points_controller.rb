@@ -1,4 +1,6 @@
 class PointsController < ApplicationController
+  include Swagger::PointsApi
+
   # GET /users/1/points/points.json
   def show
     user_id = params.permit(:user_id, :format)[:user_id]
