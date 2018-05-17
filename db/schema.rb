@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2018_04_04_090631) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "points", force: :cascade do |t|
     t.integer "amount"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_points_on_user_id"
@@ -29,4 +32,5 @@ ActiveRecord::Schema.define(version: 2018_04_04_090631) do
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
+  add_foreign_key "points", "users"
 end
