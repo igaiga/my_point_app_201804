@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount SwaggerUiEngine::Engine, at: "/swagger-ui"
 
   resources :users, only: [] do
+  #resources :users, param: :token, only: [] do # /users/:user_token/...にする
     resource :points, only: [:show] do
       post :decrease
       post :increase
