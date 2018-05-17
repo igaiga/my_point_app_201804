@@ -22,8 +22,9 @@ class User < ApplicationRecord
   # transaction内で例外を起こすとDBがロールバックされる
   def self.test_transaction
     ActiveRecord::Base.transaction do
-      user = create!(name: "transaction_test03")
-      user.increase_point(value)
+      user = create!(name: SecureRandom.uuid.first(8))
+      p "*****user.name: #{user.name}"
+      user.increase_point(100)
       raise # ↑の2行が巻き戻る
     end
   end
