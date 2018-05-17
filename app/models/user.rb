@@ -35,6 +35,8 @@ class User < ApplicationRecord
       puts "***** waiting lock"
       user = User.lock.find(user_id) # DBから取得＆ロックしてモデルオブジェクトを作るとき
       #user.lock! # 既にDBから取得済みのモデルオブジェクトがあるとき
+      raise if user.point < 100
+      user.decrease_point(100)
       puts "***** got lock"
       sleep 10
     end #transactionブロックを抜けるとロック解除
